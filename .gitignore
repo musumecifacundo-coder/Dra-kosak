@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# Imágenes de referencia de diseño (no forman parte del sitio)
+/Captura*.png
+/3e1c8e68d0eaffffcd2ca5704830de86.jpg
+/2daa89d6ac89ac96dd8f4e4d141f217f.jpg
