@@ -428,13 +428,19 @@ body.site-protected { overflow: hidden; }
 }
 .hero__saludo .acento { color: var(--berenjena); font-style: italic; position: relative; white-space: nowrap; }
 .hero__saludo .acento svg { position: absolute; left: 0; bottom: -0.14em; width: 100%; height: 0.22em; }
+.hero__pregunta { margin-top: 1.15rem; color: var(--berenjena); font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; }
 .hero__sub {
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-size: clamp(0.98rem, 1.55vw, 1.08rem);
+  line-height: 1.58;
   color: var(--gris);
-  max-width: 42ch;
-  margin-top: 1.2rem;
+  max-width: 54ch;
+  margin-top: 1rem;
 }
-.hero__acciones { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+.hero__pregunta + .hero__sub { margin-top: 0.45rem; }
+.hero__sub p + p { margin-top: 0.75rem; }
+.hero__resumen, .hero__detalle-movil { display: none; }
+.hero__firma { font-size: 2.1rem; }
+.hero__acciones { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.6rem; }
 .hero__mini { margin-top: 1.7rem; font-size: 0.9rem; color: var(--gris-suave); }
 .hero__mini strong { color: var(--carbon); }
 
@@ -470,6 +476,25 @@ body.site-protected { overflow: hidden; }
   .hero__sub { margin-inline: auto; }
   .hero__acciones { justify-content: center; }
   .hero__figura { order: -1; width: min(260px, 68%); }
+}
+@media (max-width: 600px) {
+  .hero__inner { padding: 1.15rem 0 1.5rem; gap: 0.55rem; }
+  .hero__figura { width: min(124px, 34vw); }
+  .hero__saludo { margin-top: 0.45rem; font-size: clamp(1.9rem, 8.2vw, 2.25rem); line-height: 1.04; }
+  .hero__pregunta { margin-top: 0.55rem; font-size: 1.05rem; }
+  .hero__sub { display: none; }
+  .hero__resumen { display: block; max-width: 40ch; margin: 0.45rem auto 0; color: var(--gris); font-size: 0.9rem; line-height: 1.43; }
+  .hero__detalle-movil { display: block; margin-top: 0.45rem; }
+  .hero__detalle-movil summary { display: inline-flex; align-items: center; gap: 0.35rem; border-bottom: 1px solid currentColor; color: var(--berenjena); font-size: 0.85rem; font-weight: 700; line-height: 1.35; list-style: none; cursor: pointer; }
+  .hero__detalle-movil summary::-webkit-details-marker { display: none; }
+  .hero__detalle-movil summary::after { content: "+"; font-size: 1.1em; }
+  .hero__detalle-movil[open] summary::after { content: "−"; }
+  .hero__detalle-contenido { margin-top: 0.75rem; color: var(--gris); font-size: 0.9rem; line-height: 1.48; text-align: left; }
+  .hero__detalle-contenido p + p { margin-top: 0.7rem; }
+  .hero__firma { margin-top: 0.4rem; font-size: 1.45rem; }
+  .hero__acciones { margin-top: 0.55rem; }
+  .hero__acciones .btn { padding: 0.68em 1.5em; font-size: 0.86rem; }
+  .hero__mini { margin-top: 0.65rem; font-size: 0.78rem; line-height: 1.35; }
 }
 
 /* ============================================
@@ -515,6 +540,8 @@ body.site-protected { overflow: hidden; }
 /* ---- Medicina integral (2 columnas) ---- */
 .integral__grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 4rem; align-items: center; }
 .integral__intro { margin-top: 1.1rem; font-size: 1.08rem; color: var(--gris); }
+.integral__pasos { margin-top: 1.3rem; padding: 0; list-style: none; }
+.integral__pasos li { padding: 0.48rem 0; border-top: 1px solid var(--borde-fuerte); color: var(--gris); font-size: 0.98rem; line-height: 1.4; }
 
 .cards-puntos { display: grid; gap: 1rem; }
 .punto {
@@ -539,15 +566,6 @@ body.site-protected { overflow: hidden; }
 .punto h3 { font-family: var(--font-body); font-size: 1.02rem; font-weight: 700; color: var(--carbon); margin-bottom: 0.2rem; }
 .punto p { font-size: 0.95rem; color: var(--gris); }
 
-.factor-list {
-  list-style: none;
-  display: grid;
-  gap: 0.8rem;
-  margin-top: 1.6rem;
-  padding: 0;
-}
-.factor-list > span { display: flex; gap: 0.7em; align-items: center; font-size: 1rem; color: var(--gris); }
-.factor-list svg { width: 16px; height: 16px; flex: none; color: var(--berenjena); }
 
 @media (max-width: 900px) { .integral__grid { grid-template-columns: 1fr; gap: 2.4rem; } }
 
@@ -574,26 +592,28 @@ body.site-protected { overflow: hidden; }
 .hongos__texto .etiqueta { color: var(--verde-salvia-claro); }
 .hongos__texto .etiqueta::before { background: var(--verde-salvia-claro); }
 .hongos__texto p { margin-top: 1.1rem; color: rgba(255, 255, 255, 0.82); }
-.hongos__lista { margin-top: 1.4rem; display: grid; gap: 0.75rem; list-style: none; }
-.hongos__lista li { display: flex; gap: 0.7em; align-items: baseline; font-size: 1rem; }
-.hongos__lista svg { width: 16px; height: 16px; flex: none; transform: translateY(2px); color: var(--verde-salvia-claro); }
+.hongos__subtitulo { margin-top: 2rem; color: var(--crema); font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15; }
+.hongos__texto h2 .firma, .hongos__subtitulo .firma { margin-left: 0.18em; }
 
-.hongos__tarjetas { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.hongo-card {
-  border-radius: var(--radius-md);
-  padding: 1.5rem 1.3rem;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  transition: transform 0.3s var(--ease-out), background 0.3s;
-}
-.hongo-card:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.11); }
+.hongos__tarjetas { display: grid; gap: 1rem; }
+.marca-card { padding: 1.45rem 1.55rem; border: 1px solid rgba(196, 212, 184, 0.28); border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.045); }
+.marca-card__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 5rem; }
+.marca-card__header--esporaqi { justify-content: flex-start; }
+.marca-card__kicker { display: block; color: var(--verde-salvia-claro); font-size: 0.67rem; font-weight: 700; letter-spacing: 0.16em; line-height: 1.4; text-transform: uppercase; }
+.marca-card__nombre { margin-top: 0.25rem; color: var(--crema); font-size: clamp(1.65rem, 2.3vw, 2rem); letter-spacing: -0.025em; }
+.marca-card__nombre--jubilo { margin-top: 0.35rem; }
+.marca-card__nombre--jubilo img { width: min(11.5rem, 100%); height: auto; }
+.marca-card__distintivo { align-self: flex-start; color: var(--verde-salvia-claro); border: 1px solid rgba(196, 212, 184, 0.42); border-radius: 100px; padding: 0.28rem 0.65rem; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.14em; }
+.marca-card__logo { width: 5.5rem; height: 5.1rem; flex: none; object-fit: contain; }
+.marca-card__links { margin-top: 1.15rem; border-top: 1px solid rgba(196, 212, 184, 0.22); }
+.marca-card__link { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; padding: 0.75rem 0; color: var(--crema); font-size: 0.9rem; line-height: 1.3; text-decoration: none; }
+.marca-card__link + .marca-card__link { border-top: 1px solid rgba(196, 212, 184, 0.14); }
+.marca-card__link > span:last-child { color: var(--verde-salvia-claro); white-space: nowrap; }
+.marca-card__link:hover > span:last-child { color: var(--crema); }
+.marca-card__link:focus-visible { outline: 2px solid var(--verde-salvia-claro); outline-offset: 3px; }
 .hongo-card__icono { width: 42px; height: 42px; color: var(--verde-salvia-claro); margin-bottom: 0.7rem; }
-.hongo-card h3 { color: var(--crema); font-size: 1.05rem; font-weight: 600; }
-.hongo-card p { font-size: 0.88rem; color: rgba(255, 255, 255, 0.72); margin-top: 0.35rem; }
-.hongo-card--ancha { grid-column: 1 / -1; text-align: center; }
-.hongo-card--ancha .hongo-card__icono { margin-inline: auto; }
 .hongos__cta { margin-top: 2rem; }
-@media (max-width: 900px) { .hongos__inner { grid-template-columns: 1fr; gap: 2.6rem; } .hongos__tarjetas { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .hongos__inner { grid-template-columns: 1fr; gap: 2.6rem; } }
 
 /* ---- Quién soy ---- */
 .quien { position: relative; overflow: hidden; }
@@ -629,7 +649,7 @@ body.site-protected { overflow: hidden; }
   color: var(--musgo-osc);
   border: 1px solid var(--borde);
 }
-.quien__acciones { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+.quien__acciones { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.8rem; }
 @media (max-width: 900px) { .quien__grid { grid-template-columns: 1fr; gap: 2.6rem; } .quien__blob { max-width: 400px; margin-inline: auto; } }
 
 /* ---- Tarjetas de servicios ---- */
@@ -649,6 +669,10 @@ body.site-protected { overflow: hidden; }
 .tarjeta:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .tarjeta__media { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
 .tarjeta__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease-out); }
+.tarjeta__media--reprocann { background: #788a7f; }
+.tarjeta__media--reprocann img { object-fit: contain; object-position: center; }
+.tarjeta__media--reprocann .tarjeta__tinte { background: transparent; }
+.tarjeta:hover .tarjeta__media.tarjeta__media--reprocann img { transform: none; }
 .tarjeta:hover .tarjeta__media img { transform: scale(1.05); }
 .tarjeta__tinte { position: absolute; inset: 0; background: linear-gradient(150deg, rgba(31, 31, 31, 0.28), rgba(31, 31, 31, 0.05) 75%); }
 .tarjeta__categoria {
@@ -794,7 +818,7 @@ body.site-protected { overflow: hidden; }
   color: var(--carbon);
   margin-bottom: 0.6rem;
 }
-.cobertura__opciones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+.cobertura__opciones { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
 .cobertura__opcion input { position: absolute; opacity: 0; pointer-events: none; }
 .cobertura__tarjeta {
   display: flex;
@@ -888,7 +912,7 @@ body.site-protected { overflow: hidden; }
 .directo__acciones { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.15rem; }
 .directo__acciones .btn { font-size: 0.82rem; padding: 0.78em 1.1em; }
 
-.reprocann-banner { max-width: 1100px; width: 100%; height: auto; aspect-ratio: 1600 / 419; object-fit: contain; object-position: center; display: block; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); background: var(--musgo); }
+.reprocann-banner { max-width: 1100px; width: 100%; height: auto; aspect-ratio: 1600 / 419; object-fit: contain; object-position: 50% 50%; display: block; margin-inline: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); background: #788a7f; }
 .reprocann-banner-wrap { display: flex; justify-content: center; padding-top: 3rem; padding-bottom: 0; }
 
 @media (max-width: 860px) {
