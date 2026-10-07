@@ -179,77 +179,6 @@ strong { color: var(--carbon); font-weight: 700; }
 .btn--whatsapp svg { width: 1.15em; height: 1.15em; flex: none; }
 
 /* ============================================
-   ACCESO PRIVADO DE LA PROPUESTA
-   ============================================ */
-body.site-protected > *:not(.access-gate) { visibility: hidden; }
-body.site-protected { overflow: hidden; }
-
-.access-gate {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  padding: 2rem 1.25rem;
-  background:
-    radial-gradient(1100px 700px at 80% 15%, rgba(117, 53, 114, 0.22), transparent 55%),
-    radial-gradient(900px 700px at 8% 90%, rgba(28, 45, 27, 0.35), transparent 55%),
-    var(--oliva);
-}
-.access-gate::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.4;
-  background: repeating-conic-gradient(from 0deg at 80% 20%, rgba(255, 255, 255, 0.04) 0deg 0.4deg, transparent 0.4deg 2.6deg);
-}
-.access-gate__orb { position: absolute; border: 1px solid rgba(115, 190, 197, 0.28); border-radius: 50%; animation: access-float 11s ease-in-out infinite; }
-.access-gate__orb--one { width: 34rem; height: 34rem; top: -18rem; right: -8rem; }
-.access-gate__orb--two { width: 22rem; height: 22rem; bottom: -13rem; left: -6rem; border-color: rgba(117, 53, 114, 0.3); animation-delay: -4s; }
-.access-card {
-  position: relative;
-  width: min(100%, 500px);
-  padding: clamp(2.2rem, 6vw, 4rem);
-  color: var(--carbon);
-  background: var(--crema);
-  border: 1px solid var(--borde);
-  border-radius: 24px;
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.28);
-  animation: access-enter 0.8s var(--ease-out) both;
-}
-.access-card__mark {
-  width: 3.25rem; height: 3.25rem;
-  display: grid; place-items: center;
-  margin-bottom: 1.8rem;
-  border: 1px solid var(--musgo);
-  border-radius: 50%;
-  color: var(--musgo);
-  font: 800 0.72rem/1 var(--font-body);
-  letter-spacing: 0.08em;
-}
-.access-card__eyebrow { color: var(--berenjena); font: 700 0.68rem/1.4 var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; }
-.access-card h1 { margin-top: 1rem; font-size: clamp(2rem, 5vw, 3.1rem); letter-spacing: -0.03em; font-weight: 600; }
-.access-card h1 em { color: var(--berenjena); font-family: var(--font-firma); font-weight: 400; font-style: normal; letter-spacing: 0; font-size: 1.05em; }
-.access-card__intro { max-width: 38ch; margin-top: 1.3rem; color: var(--gris); font-size: 0.98rem; line-height: 1.75; }
-.access-form { margin-top: 2rem; }
-.access-form label { display: block; margin-bottom: 0.55rem; color: var(--carbon); font: 700 0.78rem/1.2 var(--font-body); }
-.access-form__field { display: flex; align-items: center; border: 1px solid var(--borde-fuerte); border-radius: 10px; background: var(--blanco); transition: border-color 0.2s, box-shadow 0.2s; }
-.access-form__field:focus-within { border-color: var(--musgo); box-shadow: var(--focus-ring); }
-.access-form input { min-width: 0; flex: 1; padding: 0.9rem 1rem; border: 0; outline: 0; background: transparent; color: var(--carbon); font: inherit; }
-.access-form__toggle { padding: 0.5rem 0.85rem; border: 0; background: transparent; color: var(--musgo); font: 700 0.72rem var(--font-body); cursor: pointer; }
-.access-form__error { min-height: 1.3rem; margin-top: 0.5rem; color: #a33c45; font-size: 0.8rem; }
-.access-form__submit { width: 100%; margin-top: 0.25rem; text-align: center; }
-.access-form__submit span { margin-left: 0.6rem; font-size: 1.15em; }
-.access-card__note { margin-top: 1.6rem; color: var(--gris-suave); font-size: 0.75rem; text-align: center; }
-.access-card__note span { color: var(--berenjena); margin-right: 0.3rem; }
-@keyframes access-enter { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: none; } }
-@keyframes access-float { 50% { transform: translate(18px, 12px) rotate(8deg); } }
-@keyframes access-shake { 20%, 60% { transform: translateX(-7px); } 40%, 80% { transform: translateX(7px); } }
-.access-card--shake { animation: access-shake 0.38s ease both; }
-@media (prefers-reduced-motion: reduce) { .access-card, .access-gate__orb { animation: none; } }
-
-/* ============================================
    HEADER / NAV
    ============================================ */
 .header {
@@ -268,6 +197,7 @@ body.site-protected { overflow: hidden; }
   padding: 0.9rem 0;
 }
 .logo { display: flex; flex-direction: column; text-decoration: none; line-height: 1.12; }
+.header .logo, .footer__marca .logo { gap: 0.08rem; }
 .logo__nombre {
   font-family: var(--font-body);
   font-weight: 800;
@@ -281,6 +211,7 @@ body.site-protected { overflow: hidden; }
   color: var(--berenjena);
   margin-top: -1px;
 }
+.header .logo__tag, .footer__marca .logo__tag { margin-top: 0; line-height: 1.25; }
 .nav { display: flex; align-items: center; gap: 1.3rem; margin-left: auto; }
 .nav__lista { display: flex; gap: 1.6rem; list-style: none; }
 .nav__link {
@@ -636,6 +567,39 @@ body.site-protected { overflow: hidden; }
   aspect-ratio: 3 / 3.5;
   filter: saturate(0.92);
 }
+.quien__blob--recorte { width: 100%; }
+.quien__blob--recorte::before {
+  background: linear-gradient(150deg, var(--verde-salvia-claro), var(--piedra));
+}
+.quien__marco {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 3.5;
+  border-radius: 180px 180px 22px 22px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.55), transparent 55%),
+    repeating-radial-gradient(circle at 50% 50%, rgba(117, 53, 114, 0.09) 0 1px, transparent 1px 38px),
+    linear-gradient(150deg, #e9eee2, #d9c7d2);
+}
+.quien__marco::before {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border: 1px solid rgba(117, 53, 114, 0.22);
+  border-radius: 50% 50% 18px 18px;
+}
+.quien__retrato--recorte {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  aspect-ratio: auto;
+  border-radius: 0;
+  filter: drop-shadow(0 12px 16px rgba(31, 31, 31, 0.13));
+}
 .quien__firma { position: relative; text-align: center; margin-top: 0.4rem; font-size: 1.8rem; color: var(--berenjena); }
 .quien__texto p { margin-top: 1.05rem; color: var(--gris); }
 .quien__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 1.9rem; }
@@ -966,6 +930,12 @@ body.site-protected { overflow: hidden; }
 .hero-interno__inner { position: relative; max-width: 62ch; }
 .hero-interno h1 { font-size: clamp(2.3rem, 5vw, 3.3rem); font-weight: 600; color: var(--carbon); margin-top: 0.6rem; letter-spacing: -0.02em; }
 .hero-interno p.lead { margin-top: 1.2rem; font-size: 1.1rem; color: var(--gris); max-width: 54ch; }
+.hero-interno__layout { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); }
+.hero-interno__foto { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: center; border-radius: 160px 160px 18px 18px; box-shadow: var(--shadow-card); }
+@media (max-width: 700px) {
+  .hero-interno__layout { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-interno__foto { max-height: 320px; border-radius: 120px 120px 18px 18px; }
+}
 
 /* ============================================
    ANIMACIÓN DE ENTRADA
